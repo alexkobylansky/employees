@@ -1,0 +1,5 @@
+.btn-check:focus + .btn-outline-light, .btn-outline-light:focus,
+.btn-check:focus-visible + .btn-outline-light, .btn-outline-light:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
