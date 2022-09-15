@@ -1,8 +1,12 @@
 import './employees-add-form.scss';
 import {Input} from "../../ui/input/Input";
 import {Button} from "../../ui/button/Button";
+import {useState} from "react";
 
 export const EmployeesAddForm = () => {
+  const [name, setName] = useState("");
+  const [salary, setSalary] = useState(null);
+
   return (
     <div className="add-form">
       <h3>Добавьте нового сотрудника</h3>
@@ -13,15 +17,17 @@ export const EmployeesAddForm = () => {
                id={"name-input"}
                name={"name"}
                placeholder={"Как его зовут?"}
-               inputValue={""}
+               inputValue={name}
+               setInputValue={setName}
                labelValue={""}
         />
         <Input type={"number"}
                classes={"form-control new-post-label"}
                id={"salary-input"}
                name={"salary"}
-               placeholder={"З/П в $?"}
-               inputValue={""}
+               placeholder={"З/П в $"}
+               inputValue={salary}
+               setInputValue={setSalary}
                labelValue={""}
         />
         <Button type={"submit"}
