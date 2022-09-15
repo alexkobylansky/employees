@@ -1,3 +1,4 @@
+import {useState} from "react";
 import './app.scss';
 import {Info} from "../info/Info";
 import {SearchPanel} from "../search-panel/SearchPanel";
@@ -6,23 +7,30 @@ import {EmployeesList} from "../employees-list/EmployeesList";
 import {EmployeesAddForm} from "../employees-add-form/EmployeesAddForm";
 
 export function App() {
-  const employees =[
+  const [employees, setEmployees] = useState([
     {
+      id: 1,
       name: "John C.",
       salary: 800,
       increase: true,
     },
     {
+      id: 2,
       name: "Alex M.",
       salary: 3000,
       increase: false,
     },
     {
+      id: 3,
       name: "Carl W.",
       salary: 5000,
       increase: false,
     },
-  ]
+  ]);
+
+  const deleteItem = (id) => {
+    setEmployees(employees.filter(item => item.id !== id));
+  }
 
   return (
     <div className="App">
@@ -33,7 +41,9 @@ export function App() {
         <Filter/>
       </div>
 
-      {employees && <EmployeesList employees={employees}/>}
+      {employees && <EmployeesList employees={employees}
+                                   onDelete={deleteItem}
+      />}
 
       <EmployeesAddForm/>
     </div>
