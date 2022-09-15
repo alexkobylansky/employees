@@ -6,6 +6,7 @@ export const Input = ({type, id, classes, name, placeholder, inputValue, setInpu
       {labelValue}
       <input type={type}
              className={classes}
+             id={id}
              name={name}
              placeholder={placeholder}
              defaultValue={inputValue}
