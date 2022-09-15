@@ -9,7 +9,7 @@ export const Input = ({type, id, classes, name, placeholder, inputValue, setInpu
              id={id}
              name={name}
              placeholder={placeholder}
-             defaultValue={inputValue}
+             value={inputValue}
              onChange={(event) => setInputValue(event.target.value)}
       />
     </label>
