@@ -1,16 +1,29 @@
 import './employees-list-item.scss';
 import {Button} from "../../ui/button/Button";
 import {Input} from "../../ui/input/Input";
+import {useState} from "react";
 
-export const EmployeesListItem = () => {
+export const EmployeesListItem = ({name, salary, increase}) => {
+  const [like, setLike] = useState(false);
+
+  let classNames = "list-group-item d-flex justify-content-between";
+  if (increase) {
+    classNames += " increase"
+  }
+  if (like) {
+    classNames += " like"
+  }
+
   return (
-    <li className="list-group-item d-flex justify-content-between">
-      <span className="list-group-item-label">john Smith</span>
+    <li className={classNames}>
+      <span className="list-group-item-label"
+            onClick={() => setLike(!like)}
+      >{name}</span>
       <Input type={"text"}
              classes={"list-group-item-input"}
              id={"item-input"}
              name={"salary"}
-             inputValue={"1000$"}
+             inputValue={salary + "$"}
              placeholder={""}
              labelValue={""}
       />
