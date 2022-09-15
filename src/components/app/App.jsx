@@ -7,6 +7,7 @@ import {EmployeesList} from "../employees-list/EmployeesList";
 import {EmployeesAddForm} from "../employees-add-form/EmployeesAddForm";
 
 export function App() {
+  const [maxId, setMaxId] = useState(4)
   const [employees, setEmployees] = useState([
     {
       id: 1,
@@ -32,6 +33,19 @@ export function App() {
     setEmployees(employees.filter(item => item.id !== id));
   }
 
+  const addItem = (name, salary) => {
+    if(name && salary) {
+      const newItem = {
+        id: maxId,
+        name: name,
+        salary: salary,
+        increase: false,
+      }
+      setMaxId(maxId + 1);
+      setEmployees([...employees, newItem]);
+    }
+  }
+
   return (
     <div className="App">
       <Info/>
@@ -45,7 +59,7 @@ export function App() {
                                    onDelete={deleteItem}
       />}
 
-      <EmployeesAddForm/>
+      <EmployeesAddForm addItem={addItem}/>
     </div>
   );
 }
