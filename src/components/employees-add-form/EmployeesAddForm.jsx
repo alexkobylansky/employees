@@ -1,7 +1,7 @@
+import {useState} from "react";
 import './employees-add-form.scss';
 import {Input} from "../../ui/input/Input";
 import {Button} from "../../ui/button/Button";
-import {useState} from "react";
 
 export const EmployeesAddForm = () => {
   const [name, setName] = useState("");
@@ -33,6 +33,7 @@ export const EmployeesAddForm = () => {
         <Button type={"submit"}
                 classes={"btn btn-outline-light"}
                 children={"Добавить"}
+                onClick={() => {}}
         />
       </form>
     </div>
