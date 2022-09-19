@@ -80,9 +80,14 @@ export function App() {
     setEmployees(toggleRise(id));
   }
 
+  const count = employees.length;
+  const increased = employees.filter(item => item.increase === true).length
+
   return (
     <div className="App">
-      <Info/>
+      <Info count={count}
+            increased={increased}
+      />
       <div className="search-panel">
         <SearchPanel/>
         <Filter/>
