@@ -1,23 +1,21 @@
-import {useState} from "react";
 import './employees-list-item.scss';
 import {Button} from "../../ui/button/Button";
 import {Input} from "../../ui/input/Input";
 
-export const EmployeesListItem = ({name, salary, increase, onDelete}) => {
-  const [like, setLike] = useState(false);
+export const EmployeesListItem = ({name, salary, increase, rise, onDelete, onToggleIncrease, onToggleRise}) => {
 
   let classNames = "list-group-item d-flex justify-content-between";
   if (increase) {
     classNames += " increase"
   }
-  if (like) {
+  if(rise) {
     classNames += " like"
   }
 
   return (
     <li className={classNames}>
       <span className="list-group-item-label"
-            onClick={() => setLike(!like)}
+            onClick={onToggleRise}
       >{name}</span>
       <Input type={"text"}
              classes={"list-group-item-input"}
@@ -31,7 +29,7 @@ export const EmployeesListItem = ({name, salary, increase, onDelete}) => {
         <Button type={"button"}
                 classes={"btn-cookie btn-sm"}
                 children={<i className='fas fa-cookie'></i>}
-                onClick={() => {}}
+                onClick={onToggleIncrease}
         />
         <Button type={"button"}
                 classes={"btn-trash btn-sm"}

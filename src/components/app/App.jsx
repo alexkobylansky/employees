@@ -13,18 +13,21 @@ export function App() {
       id: 1,
       name: "John C.",
       salary: 800,
+      rise: true,
       increase: true,
     },
     {
       id: 2,
       name: "Alex M.",
       salary: 3000,
+      rise: false,
       increase: false,
     },
     {
       id: 3,
       name: "Carl W.",
       salary: 5000,
+      rise: false,
       increase: false,
     },
   ]);
@@ -34,11 +37,12 @@ export function App() {
   }
 
   const addItem = (name, salary) => {
-    if(name && salary) {
+    if (name && salary) {
       const newItem = {
         id: maxId,
         name: name,
         salary: salary,
+        rise: false,
         increase: false,
       }
       setMaxId(maxId + 1);
@@ -46,19 +50,48 @@ export function App() {
     }
   }
 
+  const onToggleIncrease = (id) => {
+    const toggleIncrease = (id) => {
+      return employees.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            increase: !item.increase
+          }
+        }
+        return item
+      })
+    }
+    setEmployees(toggleIncrease(id));
+  }
+
+  const onToggleRise = (id) => {
+    const toggleRise = (id) => {
+      return employees.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            rise: !item.rise
+          }
+        }
+        return item
+      })
+    }
+    setEmployees(toggleRise(id));
+  }
+
   return (
     <div className="App">
       <Info/>
-
       <div className="search-panel">
         <SearchPanel/>
         <Filter/>
       </div>
-
       {employees && <EmployeesList employees={employees}
                                    onDelete={deleteItem}
+                                   onToggleIncrease={onToggleIncrease}
+                                   onToggleRise={onToggleRise}
       />}
-
       <EmployeesAddForm addItem={addItem}/>
     </div>
   );
