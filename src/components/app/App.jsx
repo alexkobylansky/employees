@@ -7,7 +7,6 @@ import {EmployeesList} from "../employees-list/EmployeesList";
 import {EmployeesAddForm} from "../employees-add-form/EmployeesAddForm";
 
 export function App() {
-  const [maxId, setMaxId] = useState(4)
   const [employees, setEmployees] = useState([
     {
       id: 1,
@@ -31,6 +30,9 @@ export function App() {
       increase: false,
     },
   ]);
+  const [maxId, setMaxId] = useState(() => employees[employees.length - 1].id + 1);
+  const [term, setTerm] = useState('');
+  const [filter, setFilter] = useState('all');
 
   const deleteItem = (id) => {
     setEmployees(employees.filter(item => item.id !== id));
@@ -80,8 +82,31 @@ export function App() {
     setEmployees(toggleRise(id));
   }
 
+  const searchEmployee = (data, value) => {
+    if (value.length === 0) {
+      return data
+    } else {
+      return data.filter(item => {
+        return item.name.includes(value)
+      })
+    }
+  }
+  
+  const filterPost = (data, filter) => {
+    switch (filter) {
+      case 'rise':
+        return data.filter(item => item.rise === true)
+      case 'salary':
+        return data.filter(item => item.salary > 1000)
+      default:
+        return data
+    }
+  }
+
+  const visibleData = filterPost(searchEmployee(employees, term), filter);
+
   const count = employees.length;
-  const increased = employees.filter(item => item.increase === true).length
+  const increased = employees.filter(item => item.increase === true).length;
 
   return (
     <div className="App">
@@ -89,10 +114,10 @@ export function App() {
             increased={increased}
       />
       <div className="search-panel">
-        <SearchPanel/>
-        <Filter/>
+        <SearchPanel term={term} setTerm={setTerm}/>
+        <Filter filter={filter} setFilter={setFilter}/>
       </div>
-      {employees && <EmployeesList employees={employees}
+      {employees && <EmployeesList employees={visibleData}
                                    onDelete={deleteItem}
                                    onToggleIncrease={onToggleIncrease}
                                    onToggleRise={onToggleRise}

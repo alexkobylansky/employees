@@ -28,12 +28,14 @@ export const EmployeesListItem = ({name, salary, increase, rise, onDelete, onTog
       <div className="d-flex justify-content-center align-content-center">
         <Button type={"button"}
                 classes={"btn-cookie btn-sm"}
+                name={''}
                 children={<i className='fas fa-cookie'></i>}
                 onClick={onToggleIncrease}
         />
         <Button type={"button"}
                 classes={"btn-trash btn-sm"}
                 children={<i className="fas fa-trash"></i>}
+                name={''}
                 onClick={onDelete}
         />
         <i className="fas fa-star"></i>

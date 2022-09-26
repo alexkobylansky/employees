@@ -41,6 +41,7 @@ export const EmployeesAddForm = ({addItem}) => {
         />
         <Button type={"submit"}
                 classes={"btn btn-outline-light"}
+                name={''}
                 children={"Добавить"}
                 onClick={() => {}}
         />
