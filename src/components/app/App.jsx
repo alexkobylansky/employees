@@ -86,9 +86,7 @@ export function App() {
     if (value.length === 0) {
       return data
     } else {
-      return data.filter(item => {
-        return item.name.includes(value)
-      })
+      return data.filter(item => item.name.includes(value))
     }
   }
   
