@@ -43,7 +43,6 @@ export const EmployeesAddForm = ({addItem}) => {
                 classes={"btn btn-outline-light"}
                 name={''}
                 children={"Добавить"}
-                onClick={() => {}}
         />
       </form>
     </div>
