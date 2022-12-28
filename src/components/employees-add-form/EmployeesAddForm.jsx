@@ -5,13 +5,19 @@ import {Button} from "../../ui/button/Button";
 
 export const EmployeesAddForm = ({addItem}) => {
   const [name, setName] = useState("");
-  const [salary, setSalary] = useState("");
+  const [salary, setSalary] = useState(0);
+
+  const onChangeValueInput = (value) => {
+    if (value >= 0) {
+      setSalary(value);
+    }
+  }
 
   const onSubmit = (event) => {
     event.preventDefault();
     addItem(name, salary);
     setName("");
-    setSalary("");
+    setSalary(0);
   }
 
   return (
@@ -36,7 +42,7 @@ export const EmployeesAddForm = ({addItem}) => {
                name={"salary"}
                placeholder={"З/П в $"}
                inputValue={salary}
-               setInputValue={setSalary}
+               setInputValue={onChangeValueInput}
                labelValue={""}
         />
         <Button type={"submit"}
