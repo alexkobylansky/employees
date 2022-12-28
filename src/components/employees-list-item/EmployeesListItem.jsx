@@ -29,16 +29,16 @@ export const EmployeesListItem = ({name, salary, increase, rise, onDelete, onTog
         <Button type={"button"}
                 classes={"btn-cookie btn-sm"}
                 name={''}
-                children={<i className='fas fa-cookie'></i>}
+                children={<i className="fa-solid fa-cookie"/>}
                 onClick={onToggleIncrease}
         />
         <Button type={"button"}
                 classes={"btn-trash btn-sm"}
-                children={<i className="fas fa-trash"></i>}
+                children={<i className="fa-solid fa-trash"/>}
                 name={''}
                 onClick={onDelete}
         />
-        <i className="fas fa-star"></i>
+        <i className="fa-solid fa-star"/>
       </div>
     </li>
   );
