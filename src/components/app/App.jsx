@@ -6,30 +6,32 @@ import {Filter} from "../filter/Filter";
 import {EmployeesList} from "../employees-list/EmployeesList";
 import {EmployeesAddForm} from "../employees-add-form/EmployeesAddForm";
 
+const employeeArray =  [
+  {
+    id: 1,
+    name: "John C.",
+    salary: 800,
+    rise: true,
+    increase: true,
+  },
+  {
+    id: 2,
+    name: "Alex M.",
+    salary: 3000,
+    rise: false,
+    increase: false,
+  },
+  {
+    id: 3,
+    name: "Carl W.",
+    salary: 5000,
+    rise: false,
+    increase: false,
+  },
+];
+
 export function App() {
-  const [employees, setEmployees] = useState([
-    {
-      id: 1,
-      name: "John C.",
-      salary: 800,
-      rise: true,
-      increase: true,
-    },
-    {
-      id: 2,
-      name: "Alex M.",
-      salary: 3000,
-      rise: false,
-      increase: false,
-    },
-    {
-      id: 3,
-      name: "Carl W.",
-      salary: 5000,
-      rise: false,
-      increase: false,
-    },
-  ]);
+  const [employees, setEmployees] = useState(employeeArray);
   const [maxId, setMaxId] = useState(() => employees[employees.length - 1].id + 1);
   const [term, setTerm] = useState('');
   const [filter, setFilter] = useState('all');
