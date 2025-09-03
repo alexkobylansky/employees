@@ -38,7 +38,7 @@ export function App() {
 
   const deleteItem = (id) => {
     setEmployees(employees.filter(item => item.id !== id));
-  }
+  };
 
   const addItem = (name, salary) => {
     if (name && salary) {
@@ -52,7 +52,7 @@ export function App() {
       setMaxId(maxId + 1);
       setEmployees([...employees, newItem]);
     }
-  }
+  };
 
   const onToggleIncrease = (id) => {
     const toggleIncrease = (id) => {
@@ -65,9 +65,9 @@ export function App() {
         }
         return item
       })
-    }
+    };
     setEmployees(toggleIncrease(id));
-  }
+  };
 
   const onToggleRise = (id) => {
     const toggleRise = (id) => {
@@ -80,9 +80,9 @@ export function App() {
         }
         return item
       })
-    }
+    };
     setEmployees(toggleRise(id));
-  }
+  };
 
   const searchEmployee = (data, value) => {
     if (value.length === 0) {
@@ -90,7 +90,7 @@ export function App() {
     } else {
       return data.filter(item => item.name.includes(value))
     }
-  }
+  };
   
   const filterPost = (data, filter) => {
     switch (filter) {
@@ -101,7 +101,7 @@ export function App() {
       default:
         return data
     }
-  }
+  };
 
   const visibleData = filterPost(searchEmployee(employees, term), filter);
 
